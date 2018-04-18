@@ -1,119 +1,62 @@
-
 <!DOCTYPE html>
+
 <head>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-functions.js"></script>
-    
- 
-
-  
-<script>
-    var config = {
-    apiKey: "AIzaSyC_M-c_7pQI-XXEaB8ACDezSlGzbLbOfN8",
-    authDomain: "test-1433b.firebaseapp.com",
-    databaseURL: "https://test-1433b.firebaseio.com",
-    projectId: "test-1433b",
-    storageBucket: "test-1433b.appspot.com",
-    messagingSenderId: "683916710229"
-  };
-firebase.initializeApp(config);
-  
-  
-  function login()
-  {
- var email=document.getElementById("uname").value;
-  var password=document.getElementById("pw").value;
-  
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-
-  var errorCode = error.code;
-  var errorMessage = error.message;
- 
-});
-  }
-  
-  function register()
-{
-  var email=document.getElementById("uname").value;
-  var password=document.getElementById("pw").value;
-
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  
-  alert(errorCode+" "+errorMessage);
-  
-});
-window.location('redirect.html');
-  }
-  
-  function googleLogin()
-  {
-  var provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-  
-  var token = result.credential.accessToken;
-  var user = result.user;
-  window.location.href='redirect.html';
-alert("res"+result.user.email);
-
-
-
-}).catch(function(error) {
-
-  var errorCode = error.code;
-  var errorMessage = error.message;
-
-  var email = error.email;
-
-  var credential = error.credential;
- alert(errorCode+errorMessage+email+credential);
-});
-  
-  }
-  
-  function fbLogin()
-  {
-  var provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-
-  var token = result.credential.accessToken;
-  var user = result.user;
-  
-
-}).catch(function(error) {
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  var email = error.email;
-  var credential = error.credential;
-
-});
-  }
- 
-</script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-functions.js"></script>
 
 </head>
+
 <body>
-<h1>hello</h1>
 
-username: 
-<input type="text" id="uname"/>
-</br>
-password: 
-<input type="text" id="pw"/>
-</br></br></br></br></br>
-<input type="button" value="login" onClick="login();"/>
 
-<input type="button" value="register" onClick="register();"/>
+  <fieldset>
+    <legend>Sign in</legend>
+    Email:
+    <input type="email" id="signin-email"> Password:
+    <input type="password" id="signin-password">
+    <!-- <input type="button" value="login" onClick="login();" /> -->
+    <button onclick="login();">
+      Login
+    </button>
 
-<input type="button" value="google" onClick="googleLogin();"/>
+    <button onclick="googleLogin();">
+      Google
+    </button>
 
-<input type="button" value="facebook" onClick="fbLogin();"/>
+    <button onclick="fbLogin();" ;>
+      Facebook
+    </button>
+
+  </fieldset>
+
+
+
+  <fieldset>
+    <legend>Sign up</legend>
+    Email:
+    <input type="email" id="signup-email"> Password:
+    <input type="password" id="signup-password">
+    <button onclick="register();">
+      Register
+    </button>
+
+    <button onclick="googleLogin();">
+      Google
+    </button>
+
+    <button onclick="fbLogin();" ;>
+      Facebook
+    </button>
+  </fieldset>
+
+
+  <script src="firebaseAuth.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
