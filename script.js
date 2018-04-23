@@ -55,3 +55,17 @@ function fbLogin() {
 
     });
 }
+
+function gitLogin()
+{
+    var provider = new firebase.auth.GithubAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+			console.log('git login response',response);
+      
+      }).catch(function(error) {
+       console.log('git login error',error);
+
+      });
+
+}
