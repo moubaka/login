@@ -36,6 +36,7 @@ function googleLogin() {
     firebase.auth().signInWithPopup(provider).then(function (response) {
 
         console.log("Google Login response: ", response);
+        moveToNext(response.user);
 
     }).catch(function (error) {
 
@@ -49,6 +50,7 @@ function fbLogin() {
     firebase.auth().signInWithPopup(provider).then(function (response) {
 
         console.log('FB Login response: ', response);
+        moveToNext(response.user);
 
     }).catch(function (error) {
         console.log('FB login error', error);
@@ -62,10 +64,53 @@ function gitLogin()
     firebase.auth().signInWithPopup(provider).then(function(result) {
             var user = result.user;
 			console.log('git login response',response);
+            moveToNext(response.user);
       
       }).catch(function(error) {
        console.log('git login error',error);
 
       });
 
+}
+
+
+function twitterLogin()
+{
+    var provider = new firebase.auth.TwitterAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+ 
+  console.log("twitter login",result);
+ 
+  var user = result.user;
+}).catch(function(error) {
+   
+    console.log("twitter error",error);
+    moveToNext(response.user);
+ 
+});
+}
+
+
+function moveToNext(user)
+{
+    localStorage.setItem('testObject', JSON.stringify(user));
+    window.location='redirect.html';
+}
+
+function getUser()
+{
+    var user= localStorage.getItem('testObject');
+    var objUser=JSON.parse(user);
+    if(user==null)
+    {
+        window.location='login.html'
+    }
+    else
+    {
+        document.write("<b>Name : </b>",objUser.displayName);
+        document.write("</br><b>Email : </b>",objUser.email);
+        document.write("</br><b>Firebase UID : </b>",objUser.uid);
+        document.write("</br><img src='"+objUser.photoURL+"'/>");
+    }
+    console.log("<USER Details: ",JSON.parse(user));
 }

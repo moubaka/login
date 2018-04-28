@@ -1,69 +1,23 @@
-<!DOCTYPE html>
+<html>
+    <head>
+            <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-functions.js"></script>
+            
+     
+  
 
-<head>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-functions.js"></script>
-
-</head>
-
-<body>
-
-
-  <fieldset>
-    <legend>Sign in</legend>
-    Email:
-    <input type="email" id="signin-email"> Password:
-    <input type="password" id="signin-password">
-    <!-- <input type="button" value="login" onClick="login();" /> -->
-    <button onclick="login();">
-      Login
+    </head>
+<body onload="getUser();">
+<h1>welcome</h1>
+<button>
+    Log out
     </button>
-
-    <button onclick="googleLogin();">
-      Google
-    </button>
-
-    <button onclick="fbLogin();" ;>
-      Facebook
-    </button>
-
-	  <button onclick="gitLogin();">
-      Github
-    </button>
-	
-  </fieldset>
-
-
-
-  <fieldset>
-    <legend>Sign up</legend>
-    Email:
-    <input type="email" id="signup-email"> Password:
-    <input type="password" id="signup-password">
-    <button onclick="register();">
-      Register
-    </button>
-
-    <button onclick="googleLogin();">
-      Google
-    </button>
-
-    <button onclick="fbLogin();" ;>
-      Facebook
-    </button>
-	
-	  <button onclick="gitLogin();">
-      Github
-    </button>
-  </fieldset>
-
-
-  <script src="firebaseAuth.js"></script>
+<script src="firebaseAuth.js"></script>
   <script src="script.js"></script>
 </body>
 
