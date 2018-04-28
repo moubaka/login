@@ -94,7 +94,7 @@ function twitterLogin()
 function moveToNext(user)
 {
     localStorage.setItem('testObject', JSON.stringify(user));
-    window.location='redirect.html';
+    window.location='index.html';
 }
 
 function getUser()
